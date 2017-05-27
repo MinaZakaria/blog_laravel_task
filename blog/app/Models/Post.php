@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Post extends Eloquent {
 
     use \Dimsav\Translatable\Translatable;
