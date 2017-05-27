@@ -4,16 +4,14 @@
 @endsection
 
 @section('content')
-<container>
+<div class="container">
     <h1>All categories</h1>
     @foreach($categories as $category)
-        <li>Title:->  {{$category->slug}}</li>
-        <li> Description:-> {{$category->description}}</li>
-        <br>
+    <ul>
+        <li><a href="{{route('category.show',$category->id)}}">{{$category->slug}}</a></li>
+    </ul>
+        <hr>
     @endforeach
-</container>
-
-
-
+</div>
 
 @endsection

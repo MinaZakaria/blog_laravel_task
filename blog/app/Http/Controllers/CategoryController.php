@@ -13,11 +13,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($locale)
+    public function index()
     {
-
-        // $categories= Category::all();
-        // $frenchText = $article->getTranslation('fr')->text;
+        // app()->setLocale($locale);
+        $categories= Category::all();
         return view('categories.index',['categories'=>$categories]);
     }
 
@@ -60,12 +59,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
         $category=Category::find($id);
-        app()->setLocale('en');
-        $frenchName = $category->name;
-        // $frenchName= $category->getTranslation('fr')->name;
-        echo $frenchName;
+        $posts=Post::where('category_id','=', $id)->get();
+        return view('categories.show',['category'=>$category, 'posts'=>$posts]);
+        // app()->setLocale('en');
+        // $frenchName = $category->name;
+        // // $frenchName= $category->getTranslation('fr')->name;
+        // echo $frenchName;
     }
 
     /**

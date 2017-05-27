@@ -31,6 +31,11 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    <ul class="nav navbar-nav">
+                        <a class="navbar-brand" href="{{ url('/category') }}">
+                            All categories
+                        </a>
+                    </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

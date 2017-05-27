@@ -1,44 +1,22 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('title')
     category show
 @endsection
 
-@section('body')
+@section('content')
+<div class="container">
 
-    welcome from show category
+    <h1>Category {{$category->slug}}:</h1>
+    <hr>
+    @foreach($posts as $post)
     <ul>
-      <li>Title:->  {{$category->title}}</li>
-      <li> Description:-> {{$category->description}}</li>
-
+        <p>title:  {{$post->title}}</p>
+        <p> Description: {{  \Illuminate\Support\Str::words($post->description,10) }}</p>
+        <p><a href="{{route('categories.posts.show',[$category->id,$post->id])}}" class="btn btn-default">read more</a></p>
     </ul>
+        <hr>
+    @endforeach
 
-    <li>All Comments</li>
-      @foreach($comments as $comment)
-          <li>Comment:->  {{$comment->content}}</li>
-               @endforeach
-            </ul>
+</div>
 
-
-
-
-          @if(count($errors) > 0)
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
-
-          {{--<form method="category" action="/categorys">--}}
-          <form method="category" action="{{route('comment.store',$category->id)}}">
-              {{csrf_field()}}
-              <label> Enter comment</label>
-              <input type="text" name="content">
-              <br>
-
-              <input type="submit" value="comment" >
-
-          </form>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Eloquent;
 
 class PostTranslation extends Eloquent {
 
