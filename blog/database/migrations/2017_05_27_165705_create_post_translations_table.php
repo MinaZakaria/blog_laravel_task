@@ -17,7 +17,7 @@ class CreatePostTranslationsTable extends Migration
             $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('locale')->index();
 
             $table->unique(['post_id','locale']);
