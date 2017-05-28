@@ -4,15 +4,14 @@
 @endsection
 
 @section('content')
-
+<div class="container">
     <table class="table table-striped" border="1">
       <thead>
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Email</th>
-          <th>Date Of Birth</th>
-          <th>Gender</th>
-          <th  colspan="4">action</th>
+
+          <th  colspan="3">action</th>
       </thead>
       <tbody>
           @foreach ($users as $user)
@@ -21,23 +20,25 @@
                   <td>{{$user->first_name}}</td>
                   <td>{{$user->last_name}}</td>
                   <td>{{$user->email}}</td>
-                  <td>{{$user->date_of_birth}}</td>
-                  <td>{{$user->gender}}</td>
+
                   <td>
-
-
-                  @if ($user->is_active == 1)
-                  <a class="btn btn-danger" href="{{route('user.block_user',$user->id)}}">Block</a>
-                  @else
-                  <a class="btn btn-danger" href="{{route('user.active_user',$user->id)}}">Un Block</a>
-
-                  @endif
-                </td>
+                      <form method="post" action="{{route('user.destroy',$user->id)}}">
+                          <input name="_method" type="hidden" value="DELETE">
+                          <div class="form-group">
+                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                               <button type="submit" class="btn btn-primary">Delete</button>
+                          </div>
+                      </form>
+                  </td>
+                  <td><a class="btn btn-danger" href="{{route('user.edit',$user->id)}}">Edit</a></td>
+                  <td><a class="btn btn-danger" href="{{route('user.show',$user->id)}}">Show</a></td>
 
           </tr>
           @endforeach
       </tbody>
     </table>
+</div>
+
 
           @if(count($errors) > 0)
               <div class="alert alert-danger">

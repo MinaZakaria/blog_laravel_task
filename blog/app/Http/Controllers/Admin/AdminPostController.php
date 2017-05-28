@@ -52,8 +52,13 @@ class AdminPostController extends Controller
     public function update(Request $request,$id)
     {
         move_uploaded_file($_FILES['image']['name'],'imgs/'.$_FILES['image']['name']);
-        $request->image = $_FILES['image']['name'];
-        Post::find($id)->update($request->all());
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->category_id = $request->category_id;
+        $post->image = $_FILES['image']['name'];
+        $post->description = $request->description;
+        $post->save();
+
         return redirect()->route('post.index');
 
     }

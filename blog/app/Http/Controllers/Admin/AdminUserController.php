@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 
@@ -57,6 +57,8 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
+        $user=User::find($id);
+        return view('admin.users.show',['user'=>$user]);
     }
 
     /**
@@ -68,6 +70,8 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         //
+        $user=User::find($id);
+        return view('admin.users.edit',['user'=> $user]);
     }
 
     /**
@@ -80,6 +84,8 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        User::find($id)->update($request->all());
+        return redirect()->route('user.index');
     }
 
     /**
@@ -91,17 +97,9 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function active_user($id){
-            DB::table('users')->where('id', $id)->update(['is_active' => 1]);
-
+        $user=User::findOrFail($id);
+        $user->delete();
         return redirect()->route('user.index');
-
-
     }
-        public function block_user($id){
-            DB::table('users')->where('id', $id)->update(['is_active' => 0]);
-            return redirect()->route('user.index');
 
-        }
 }

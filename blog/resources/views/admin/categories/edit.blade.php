@@ -5,15 +5,17 @@
 
 @section('content')
 
-    welcome from Edit post
-    <form method="POST" action="{{route('category.update',$category->id)}}}">
+    <form method="POST" action='/admin/category/{{$category->id}}'>
         {{csrf_field()}}
         {{method_field('PUT')}}
-        <label> Enter title</label>
-        <input type="text" name="title" value="{{$category->title}}">
+        <label> Enter slug</label>
+        <input type="text" name="slug" value="{{$category->slug}}">
         <br>
-        <label> Enter description</label>
-        <input type=""text name="image" value="{{$category->image}}">
+        <label> Enter English Name</label>
+        <input type=""text name="name" value="{{$category->name}}">
+        <br>
+        <label> Enter Arabic Name</label>
+        <input type=""text name="name" value="{{$category->name}}">
         <input type="submit" value="Update post" >
 
     </form>

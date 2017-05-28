@@ -248,8 +248,8 @@
           <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Users</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Categories</span></a></li>
+            <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-link"></i> <span>Users</span></a></li>
+            <li><a href="admin/category"><i class="fa fa-link"></i> <span>Categories</span></a></li>
             <li><a href="{{route('post.index')}}"><i class="fa fa-link"></i> <span>Posts</span></a></li>
 
           </ul>

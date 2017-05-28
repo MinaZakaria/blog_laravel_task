@@ -49,25 +49,8 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         //
-
-        // Category::create($request->all());
-        // return redirect()->route('category.index');
-
-        $data=$request->all();
-        $fileName = 'null';
-        if ($request->hasFile('image')) {
-            if($request->file('image')->isValid()) {
-            $destinationPath = public_path('uploads/files');
-           $extension =$request->file('image')->getClientOriginalExtension();
-           $fileName = uniqid().'.'.$extension;
-           $request->file('image')->move($destinationPath, $fileName);
-   }
-   }
-         Category::create([
-            'title' => $data['title'],
-            'image' => $fileName,
-        ]);
-        return redirect()->route('category.index');
+        Category::create($request->all());
+        return redirect('admin/category');
     }
 
     /**
@@ -107,7 +90,7 @@ class AdminCategoryController extends Controller
     {
         //
         Category::find($id)->update($request->all());
-        return redirect()->route('category.index');
+        return redirect('admin/category');
     }
 
     /**
@@ -121,6 +104,6 @@ class AdminCategoryController extends Controller
         //
         $category=Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect('admin/category');
     }
 }

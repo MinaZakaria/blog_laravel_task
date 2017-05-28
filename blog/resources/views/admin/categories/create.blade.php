@@ -5,7 +5,6 @@
 
 @section('content')
 
-    welcome from create categories
     @if(count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -15,14 +14,17 @@
             </ul>
         </div>
     @endif
-        <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
+        <form method="POST" action='/admin/category' >
         {{csrf_field()}}
-        <label> Enter title</label>
-            <input type="text" name="title">
+        <label> Enter slug</label>
+        <input type="text" name="slug">
             <br>
-            <label> Enter image</label>
+        <label> Enter English Name</label>
+        <input type="text" name="name">
+            <br>
+        <label> Enter Arabic Name</label>
+        <input type="text" name="name">
 
-            <input type="file" name="image">
         <input type="submit" value="Save category" >
 
     </form>

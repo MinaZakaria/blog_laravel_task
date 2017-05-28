@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{route('post.update',$post->id)}}}" enctype= "multipart/form-data">
+    <form method="POST" action="{{route('post.update',$post->id)}}" enctype= "multipart/form-data">
         {{csrf_field()}}
         {{method_field('PUT')}}
         <label> Edit english title</label>
@@ -21,7 +21,7 @@
         <textarea name="description" rows="4" cols="40">{{$post->description}}</textarea>
         <br>
         <label> Edit category</label>
-        <input type=""text name="category" value="{{$post->category}}">
+        <input type=""text name="category_id" value="{{$post->category_id}}">
         <br>
         <label> Edit image</label>
         <!-- <img src="/imgs/{{$post->image}}" alt="">
