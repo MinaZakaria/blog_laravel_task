@@ -1,20 +1,19 @@
-@extends('../../layouts/app')
+@extends('../../layouts/adminLayout')
 @section('title')
     post show
 @endsection
 
 @section('content')
 <div class="container">
+    <a class="btn btn-danger" href='/admin/post/create'>Create</a>
     <table class="table table-striped" border="1">
       <thead>
-          <th>title</th><th>Description</th><th colspan="3">action</th>
+          <th>title</th><th colspan="3">action</th>
       </thead>
       <tbody>
           @foreach ($posts as $post)
           <tr>
-
               <td>{{$post->title}}</td>
-              <td>{{$post->description}}</td>
               <td>
                   <form method="post" action="{{route('post.destroy',$post->id)}}">
                       <input name="_method" type="hidden" value="DELETE">
@@ -31,16 +30,5 @@
       </tbody>
     </table>
 </div>
-
-
-          @if(count($errors) > 0)
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
 
 @endsection

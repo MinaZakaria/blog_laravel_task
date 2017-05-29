@@ -1,4 +1,4 @@
-@extends('../../layouts/app')
+@extends('../../layouts/adminLayout')
 @section('title')
     category show
 @endsection
@@ -24,11 +24,9 @@
                            <button type="submit" class="btn btn-primary">Delete</button>
                            </div>
                         </form>
-                      <a class="btn btn-danger" href='/admin/category/{{$category->id}}/edit'>Edit</a>
-                      <a class="btn btn-danger" href='/admin/category/{{$category->id}}'>Show</a>
-
                     </td>
-
+                    <td><a class="btn btn-danger" href='/admin/category/{{$category->id}}/edit'>Edit</a></td>
+                    <td><a class="btn btn-danger" href='/admin/category/{{$category->id}}'>Show</a></td>
               </tr>
               @endforeach
           </tbody>

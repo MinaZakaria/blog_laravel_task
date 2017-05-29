@@ -34,11 +34,27 @@ class AdminPostController extends Controller
         return view('admin.posts.index',['posts'=>$posts]);
     }
 
-    // public function posts()
-    // {
-    //     $posts= Post::all();
-    //     return view('admin.posts.index',['posts'=>$posts]);
-    // }
+    public function create()
+    {
+        //
+        return view('admin.posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        move_uploaded_file($_FILES['image']['name'],'imgs/'.$_FILES['image']['name']);
+        $post = new Post();
+        $post->category_id=$request->category_id;
+        $post->image=$_FILES['image']['name'];
+        $post->save();
+        $post->title = $request->en_title;
+        $post->description= $request->en_description;
+        $post->translateOrNew('ar')->title = $request->ar_title;
+        $post->translateOrNew('ar')->description= $request->ar_description;
+        $post->save();
+        return redirect('admin/post');
+    }
+
     public function destroy($id){
         $post=Post::findOrFail($id);
         $post->delete();
@@ -53,12 +69,14 @@ class AdminPostController extends Controller
     {
         move_uploaded_file($_FILES['image']['name'],'imgs/'.$_FILES['image']['name']);
         $post = Post::find($id);
-        $post->title = $request->title;
-        $post->category_id = $request->category_id;
-        $post->image = $_FILES['image']['name'];
-        $post->description = $request->description;
+        $post->category_id=$request->category_id;
+        $post->image=$_FILES['image']['name'];
         $post->save();
-
+        $post->title = $request->en_title;
+        $post->description= $request->en_description;
+        $post->translateOrNew('ar')->title = $request->ar_title;
+        $post->translateOrNew('ar')->description= $request->ar_description;
+        $post->save();
         return redirect()->route('post.index');
 
     }

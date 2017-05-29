@@ -5,10 +5,14 @@
 
 @section('content')
 <div class="container">
-    <h1>Your Favourite Post</h1>
+    <h1>بوستك المفضل</h1>
         <ul>
-          <li>Title:  {{$post->title}}</li>
-          <li> Description: {{$post->description}}</li>
+            <strong>العنوان </strong>
+            <p>{{$post->title}}</p>
+            <br>
+            <strong>:الوصف </strong>
+            <p>{{$post->description}}</p>
+            <br>
           <li><img src="/imgs/{{$post->image}}" alt=""></li>
         </ul>
 </div>

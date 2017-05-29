@@ -1,10 +1,8 @@
-@extends('../../layouts/app')
-@section('title')
-    users list
-@endsection
+@extends('../../layouts/adminLayout')
 
 @section('content')
 <div class="container">
+    <a class="btn btn-danger" href='/admin/user/create'>Create</a>
     <table class="table table-striped" border="1">
       <thead>
           <th>Firstname</th>
@@ -38,16 +36,5 @@
       </tbody>
     </table>
 </div>
-
-
-          @if(count($errors) > 0)
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
 
 @endsection

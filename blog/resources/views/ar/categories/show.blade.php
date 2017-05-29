@@ -6,13 +6,16 @@
 @section('content')
 <div class="container">
 
-    <h1>Category {{$category->slug}}:</h1>
+    <h1>{{$category->slug}} مجال </h1>
     <hr>
     @foreach($posts as $post)
     <ul>
-        <p>title:  {{$post->title}}</p>
-        <p> Description: {{  \Illuminate\Support\Str::words($post->description,10) }}</p>
-        <p><a href="{{route('categories.posts.show',[$category->id,$post->id])}}" class="btn btn-default">read more</a></p>
+        <strong>العنوان </strong>
+        <p>{{$post->title}}</p>
+        <br>
+        <strong>الوصف</strong>
+        <p>{{  \Illuminate\Support\Str::words($post->description,10) }}</p>
+        <p><a href="{{route('categories.posts.show',[$category->id,$post->id])}}" class="btn btn-default">اقرا المزيد</a></p>
     </ul>
         <hr>
     @endforeach

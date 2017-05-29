@@ -1,4 +1,4 @@
-@extends('../../layouts/app')
+@extends('../../layouts/adminLayout')
 @section('title')
     post show
 @endsection

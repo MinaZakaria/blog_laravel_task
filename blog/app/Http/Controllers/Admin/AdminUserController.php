@@ -32,21 +32,23 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+     public function create()
+     {
+         //
+         return view('admin.users.create');
+     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+     public function store(Request $request)
+     {
+         $user = new User();
+         $user->first_name=$request->first_name;
+         $user->last_name=$request->last_name;
+         $user->email=$request->email;
+         $user->password=bcrypt($request->password);
+         $user->save();
+
+         return redirect('admin/user');
+     }
 
     /**
      * Display the specified resource.

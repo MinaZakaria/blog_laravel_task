@@ -37,7 +37,6 @@ class AdminCategoryController extends Controller
     {
         //
         return view('admin.categories.create');
-
     }
 
     /**
@@ -49,7 +48,12 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         //
-        Category::create($request->all());
+        $cat = new Category();
+        $cat->slug=$request->slug;
+        $cat->save();
+        $cat->name = $request->en_name;
+        $cat->translateOrNew('ar')->name = $request->ar_name;
+        $cat->save();
         return redirect('admin/category');
     }
 
@@ -88,8 +92,13 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        Category::find($id)->update($request->all());
+        // 
+        $cat = Category::find($id);
+        $cat->slug=$request->slug;
+        $cat->save();
+        $cat->name = $request->en_name;
+        $cat->translateOrNew('ar')->name = $request->ar_name;
+        $cat->save();
         return redirect('admin/category');
     }
 

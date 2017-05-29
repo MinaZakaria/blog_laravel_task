@@ -1,15 +1,13 @@
-@extends('../../layouts/app')
+@extends('../../layouts/adminLayout')
 @section('title')
     post show
 @endsection
 
 @section('content')
-
-    welcome from show post
     <ul>
       <li>Slug:  {{$category->slug}}</li>
       <li>English Name: {{$category->name}}</li>
-      <li>Arabic Name: {{$category->name}}</li>
+      <li>Arabic Name: {{$category->getTranslation('ar')->name}}</li>
     </ul>
 
 @endsection
