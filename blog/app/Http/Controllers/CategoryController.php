@@ -15,7 +15,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // app()->setLocale($locale);
         $categories= Category::all();
         return view('categories.index',['categories'=>$categories]);
     }

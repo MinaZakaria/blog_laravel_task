@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
 
 Route::prefix('admin')->group(function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -27,6 +23,20 @@ Route::prefix('admin')->group(function(){
     Route::resource('user','Admin\AdminUserController');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('categories.posts','PostController');
-Route::resource('category','CategoryController');
+
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+],
+function()
+{
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('categories.posts','PostController');
+    Route::resource('category','CategoryController');
+});
