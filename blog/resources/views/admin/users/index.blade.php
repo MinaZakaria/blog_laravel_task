@@ -1,8 +1,12 @@
 @extends('../../layouts/adminLayout')
 
+@section('title')
+    All users
+@endsection
+
 @section('content')
 <div class="container">
-    <a class="btn btn-danger" href='/admin/user/create'>Create</a>
+    <a class="btn btn-success" href='/admin/user/create'>Create</a>
     <table class="table table-striped" border="1">
       <thead>
           <th>Firstname</th>
@@ -24,12 +28,12 @@
                           <input name="_method" type="hidden" value="DELETE">
                           <div class="form-group">
                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                               <button type="submit" class="btn btn-primary">Delete</button>
+                               <button type="submit" class="btn btn-danger">Delete</button>
                           </div>
                       </form>
                   </td>
-                  <td><a class="btn btn-danger" href="{{route('user.edit',$user->id)}}">Edit</a></td>
-                  <td><a class="btn btn-danger" href="{{route('user.show',$user->id)}}">Show</a></td>
+                  <td><a class="btn btn-warning" href="{{route('user.edit',$user->id)}}">Edit</a></td>
+                  <td><a class="btn btn-primary" href="{{route('user.show',$user->id)}}">Show</a></td>
 
           </tr>
           @endforeach

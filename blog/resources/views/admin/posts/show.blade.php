@@ -1,12 +1,12 @@
 @extends('../../layouts/adminLayout')
 @section('title')
-    post show
+    show post
 @endsection
 
 @section('content')
 <div class="container">
     <ul>
-        <li>Category: {{$category_name}}</li>
+        <li>Category: {{$category_slug}}</li>
         <li>Englesh Title:  {{$post->title}}</li>
         <li>Arabic Title:  {{$post->getTranslation('ar')->title}}</li>
         <li>English Description: {{$post->description}}</li>

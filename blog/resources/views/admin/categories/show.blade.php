@@ -1,6 +1,6 @@
 @extends('../../layouts/adminLayout')
 @section('title')
-    post show
+    show category 
 @endsection
 
 @section('content')

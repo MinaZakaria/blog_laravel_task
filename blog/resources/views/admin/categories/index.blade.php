@@ -1,15 +1,15 @@
 @extends('../../layouts/adminLayout')
 @section('title')
-    category show
+    All categories
 @endsection
 
 @section('content')
 <div class="container">
-    <a class="btn btn-danger" href='/admin/category/create'>Create</a>
+    <a href='/admin/category/create' class="btn btn-success">Create</a>
     <br>
         <table class="table table-striped" border="1">
           <thead>
-              <th>Slug</th><th>Name</th><th  colspan="3">action</th>
+              <th>Slug</th><th>Name</th><th colspan="3">action</th>
           </thead>
           <tbody>
               @foreach ($categories as $category)
@@ -21,12 +21,12 @@
                       <input name="_method" type="hidden" value="DELETE">
                       <div class="form-group">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <button type="submit" class="btn btn-primary">Delete</button>
+                           <button type="submit" class="btn btn-danger">Delete</button>
                            </div>
                         </form>
                     </td>
-                    <td><a class="btn btn-danger" href='/admin/category/{{$category->id}}/edit'>Edit</a></td>
-                    <td><a class="btn btn-danger" href='/admin/category/{{$category->id}}'>Show</a></td>
+                    <td><a class="btn btn-warning" href='/admin/category/{{$category->id}}/edit'>Edit</a></td>
+                    <td><a class="btn btn-primary" href='/admin/category/{{$category->id}}'>Show</a></td>
               </tr>
               @endforeach
           </tbody>
